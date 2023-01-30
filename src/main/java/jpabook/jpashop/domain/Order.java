@@ -5,7 +5,6 @@ import jpabook.jpashop.domain.enumType.OrderStatus;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,6 +25,10 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name="DELIVERY_ID")
+    private Delivery delivery;
 
     private LocalDateTime orderDate;
 
